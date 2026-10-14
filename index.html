@@ -1,0 +1,814 @@
+ <!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APEX FITNESS | Transform Your Body & Mind coach patrick</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            red: '#FF2A3B',
+                            orange: '#FF5E00',
+                            dark: '#0B0F17',
+                            card: '#151C28',
+                            border: '#2A3447',
+                            accent: '#00F0FF'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar and glassmorphism styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0B0F17;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2A3447;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #FF2A3B;
+        }
+        .glass-header {
+            background: rgba(11, 15, 23, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .hero-gradient {
+            background: linear-gradient(180deg, rgba(11,15,23,0.3) 0%, rgba(11,15,23,0.95) 80%, #0B0F17 100%);
+        }
+        .neon-glow {
+            box-shadow: 0 0 25px rgba(255, 42, 59, 0.35);
+        }
+        .neon-glow-hover:hover {
+            box-shadow: 0 0 30px rgba(255, 42, 59, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-brand-dark text-slate-100 font-sans antialiased selection:bg-brand-red selection:text-white">
+
+    <!-- Navigation Header -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 glass-header border-b border-brand-border/40 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#home" class="flex items-center gap-2 group">
+                    <div class="w-10 h-10 rounded-lg bg-gradient-to-tr from-brand-red to-brand-orange flex items-center justify-center text-white text-xl font-black transform group-hover:rotate-6 transition-transform">
+                        <i class="fa-solid font-black fa-dumbbell"></i>
+                    </div>
+                    <span class="text-2xl font-black tracking-wider uppercase text-white">APEX<span class="text-brand-red">FIT</span></span>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center space-x-8 text-sm font-semibold tracking-wide uppercase">
+                    <a href="#home" class="text-slate-300 hover:text-brand-red transition-colors">Home</a>
+                    <a href="#about" class="text-slate-300 hover:text-brand-red transition-colors">About</a>
+                    <a href="#programs" class="text-slate-300 hover:text-brand-red transition-colors">Programs</a>
+                    <a href="#calculator" class="text-slate-300 hover:text-brand-red transition-colors">BMI Calc</a>
+                    <a href="#membership" class="text-slate-300 hover:text-brand-red transition-colors">Pricing</a>
+                    <a href="#contact" class="text-slate-300 hover:text-brand-red transition-colors">Contact</a>
+                </nav>
+
+                <!-- CTA & Mobile Toggle -->
+                <div class="flex items-center gap-4">
+                    <a href="#membership" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-lg text-sm font-bold uppercase tracking-wider text-white bg-gradient-to-r from-brand-red to-brand-orange hover:opacity-90 transition-all neon-glow-hover">
+                        Join Now
+                    </a>
+                    <button id="mobile-menu-btn" class="md:hidden text-slate-300 hover:text-white focus:outline-none p-2" aria-label="Toggle menu">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-dark/95 border-b border-brand-border px-4 pt-2 pb-6 space-y-3">
+            <a href="#home" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-brand-card hover:text-brand-red">Home</a>
+            <a href="#about" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-brand-card hover:text-brand-red">About Us</a>
+            <a href="#programs" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-brand-card hover:text-brand-red">Programs</a>
+            <a href="#calculator" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-brand-card hover:text-brand-red">BMI Calculator</a>
+            <a href="#membership" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-brand-card hover:text-brand-red">Membership</a>
+            <a href="#contact" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-brand-card hover:text-branad-red">Contact Us</a>
+            <a href="#membership" class="mobile-link block w-full text-center px-5 py-3 rounded-lg text-sm font-bold uppercase tracking-wider text-white bg-gradient-to-r from-brand-red to-brand-orange">
+                Join Now
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="prfle.jpg"
+                 alt="Gym training background" 
+                 class="w-full h-full object-cover object-center transform scale-105 animate-pulse"
+                 style="animation-duration: 8s;"
+                 onerror="this.src='https://placehold.co/1920x1080/0B0F17/FF2A3B?text=Apex+Gym+Hero'" />
+            <div class="absolute inset-0 hero-gradient"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
+            <div class="max-w-3xl space-y-6">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-red/10 border border-brand-red/30 text-brand-red text-xs sm:text-sm font-semibold tracking-wide uppercase">
+                    <span class="w-2 h-2 rounded-full bg-brand-red animate-ping"></span>
+                    No Excuses. Just Results.
+                </div>
+                
+                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white uppercase leading-none">
+                    Unleash Your <br/>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-red via-brand-orange to-yellow-500">Ultimate Potential</span>
+                </h1>
+
+                <p class="text-lg sm:text-xl text-slate-300 font-normal leading-relaxed max-w-2xl">
+                    State-of-the-art equipment, elite personal trainers, and high-intensity workout classes engineered to help you conquer your fitness goals.
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-4">
+                    <a href="#membership" class="px-8 py-4 rounded-xl text-base font-extrabold uppercase tracking-wider text-white bg-gradient-to-r from-brand-red to-brand-orange hover:shadow-lg hover:shadow-brand-red/30 transition-all text-center neon-glow">
+                        Start Free 7-Day Trial
+                    </a>
+                    <a href="#programs" class="px-8 py-4 rounded-xl text-base font-extrabold uppercase tracking-wider text-slate-200 bg-brand-card/80 border border-brand-border hover:bg-brand-card hover:text-white transition-all text-center flex items-center justify-center gap-2">
+                        <span>Explore Programs</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Stats Highlights -->
+                <div class="grid grid-cols-3 gap-4 sm:gap-8 pt-10 border-t border-brand-border/40 mt-8">
+                    <div>
+                        <p class="text-2xl sm:text-4xl font-black text-white">15,000+</p>
+                        <p class="text-xs sm:text-sm text-slate-400 uppercase font-medium mt-1">Sq. Ft. Facility</p>
+                    </div>
+                    <div>
+                        <p class="text-2xl sm:text-4xl font-black text-brand-red">50+</p>
+                        <p class="text-xs sm:text-sm text-slate-400 uppercase font-medium mt-1">Expert Coaches</p>
+                    </div>
+                    <div>
+                        <p class="text-2xl sm:text-4xl font-black text-white">24/7</p>
+                        <p class="text-xs sm:text-sm text-slate-400 uppercase font-medium mt-1">Member Access</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="py-20 lg:py-28 bg-brand-dark relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                
+                <!-- Left Image Grid -->
+                <div class="grid grid-cols-2 gap-4 relative">
+                    <div class="space-y-4">
+                        <img src="lunda.jpg" 
+                             alt="Gym weight room" 
+                             class="rounded-2xl border border-brand-border object-cover h-64 sm:h-80 w-full shadow-2xl"
+                             onerror="this.src='https://placehold.co/800x800/151C28/FFFFFF?text=Gym+Equipment'" />
+                        <div class="bg-brand-card p-6 rounded-2xl border border-brand-border">
+                            <i class="fa-solid fa-trophy text-brand-red text-3xl mb-2"></i>
+                            <h4 class="text-lg font-bold text-white">Award Winning</h4>
+                            <p class="text-xs text-slate-400 mt-1">Voted #1 Fitness Facility in the region for 3 consecutive years.</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4 pt-8">
+                        <div class="bg-gradient-to-br from-brand-red to-brand-orange p-6 rounded-2xl text-white shadow-xl">
+                            <p class="text-3xl font-black">98%</p>
+                            <p class="text-xs font-semibold uppercase tracking-wider mt-1">Member Goal Success Rate</p>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?q=80&w=800&auto=format&fit=crop" 
+                             alt="Athlete performing heavy deadlift" 
+                             class="rounded-2xl border border-brand-border object-cover h-64 sm:h-80 w-full shadow-2xl"
+                             onerror="this.src='https://placehold.co/800x800/151C28/FFFFFF?text=Athlete+Training'" />
+                    </div>
+                </div>
+
+                <!-- Right Text Content -->
+                <div class="space-y-6">
+                    <div class="inline-flex items-center gap-2 text-brand-red text-sm font-bold uppercase tracking-widest">
+                        <i class="fa-solid fa-fire"></i>
+                        <span>Why Choose APEX FIT</span>
+                    </div>
+                    <h2 class="text-3xl sm:text-5xl font-black text-white uppercase tracking-tight leading-tight">
+                        We Don't Just Build Bodies, <span class="text-brand-red">We Forge Champions.</span>
+                    </h2>
+                    <p class="text-slate-300 leading-relaxed">
+                        At APEX FIT, we believe fitness is a lifestyle, not a chore. Our cutting-edge facility bridges elite athletic performance with a welcoming, supportive community suitable for beginners and seasoned athletes alike.
+                    </p>
+
+                    <!-- Features List -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+                        <div class="flex items-start gap-3 p-3 rounded-xl bg-brand-card/50 border border-brand-border/50">
+                            <div class="p-2.5 rounded-lg bg-brand-red/10 text-brand-red">
+                                <i class="fa-solid fa-dumbbell text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-white text-base">Top Tier Gear</h3>
+                                <p class="text-xs text-slate-400 mt-0.5">Hammer Strength & Eleiko free weights.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3 p-3 rounded-xl bg-brand-card/50 border border-brand-border/50">
+                            <div class="p-2.5 rounded-lg bg-brand-orange/10 text-brand-orange">
+                                <i class="fa-solid fa-user-ninja text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-white text-base">Pro Trainers</h3>
+                                <p class="text-xs text-slate-400 mt-0.5">Certified coaches for tailored programming.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3 p-3 rounded-xl bg-brand-card/50 border border-brand-border/50">
+                            <div class="p-2.5 rounded-lg bg-brand-red/10 text-brand-red">
+                                <i class="fa-solid fa-heart-pulse text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-white text-base">Recovery Zone</h3>
+                                <p class="text-xs text-slate-400 mt-0.5">Cryotherapy, Infrared Saunas & Ice Baths.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3 p-3 rounded-xl bg-brand-card/50 border border-brand-border/50">
+                            <div class="p-2.5 rounded-lg bg-brand-orange/10 text-brand-orange">
+                                <i class="fa-solid fa-clock text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-white text-base">24/7 Access</h3>
+                                <p class="text-xs text-slate-400 mt-0.5">Train whenever inspiration strikes.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs & Classes Section -->
+    <section id="programs" class="py-20 lg:py-28 bg-gradient-to-b from-brand-dark via-brand-card/30 to-brand-dark border-y border-brand-border/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-4">
+                <span class="text-brand-red text-sm font-bold uppercase tracking-widest">Our Programs</span>
+                <h2 class="text-3xl sm:text-5xl font-black text-white uppercase tracking-tight">World-Class Workout Classes</h2>
+                <p class="text-slate-400 text-base">Whether you want to build muscle, melt body fat, or improve flexibilty, we have a specialized program tailored for you.</p>
+            </div>
+
+            <!-- Program Filters -->
+            <div class="flex flex-wrap justify-center gap-2 mt-8 mb-12">
+                <button class="program-filter active px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider border border-brand-red bg-brand-red text-white transition-all" data-filter="all">All Programs</button>
+                <button class="program-filter px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider border border-brand-border bg-brand-card text-slate-300 hover:border-brand-red hover:text-white transition-all" data-filter="strength">Strength</button>
+                <button class="program-filter px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider border border-brand-border bg-brand-card text-slate-300 hover:border-brand-red hover:text-white transition-all" data-filter="hiit">HIIT & Cardio</button>
+                <button class="program-filter px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider border border-brand-border bg-brand-card text-slate-300 hover:border-brand-red hover:text-white transition-all" data-filter="mindbody">Yoga & Flexibility</button>
+            </div>
+
+            <!-- Programs Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Program Card 1 -->
+                <div class="program-card group rounded-2xl bg-brand-card border border-brand-border overflow-hidden flex flex-col transition-all duration-300 hover:-translate-y-2 hover:border-brand-red/50 hover:shadow-xl hover:shadow-brand-red/10" data-category="strength">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=600&auto=format&fit=crop" 
+                             alt="Heavy Strength Training" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                             onerror="this.src='https://placehold.co/600x400/151C28/FF2A3B?text=Strength'" />
+                        <span class="absolute top-3 left-3 bg-brand-red text-white text-xs font-bold px-3 py-1 rounded-md uppercase">Strength</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-white group-hover:text-brand-red transition-colors">Hypertrophy & Power</h3>
+                            <p class="text-xs text-slate-400 mt-2 leading-relaxed">Focus on progressive overload, compound lifts, and targeted muscular hypertrophy.</p>
+                        </div>
+                        <div class="pt-4 border-t border-brand-border/60 flex items-center justify-between text-xs text-slate-400 font-semibold">
+                            <span><i class="fa-solid fa-clock text-brand-red mr-1"></i> 60 Mins</span>
+                            <span><i class="fa-solid fa-fire text-brand-orange mr-1"></i> High Intensity</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Program Card 2 -->
+                <div class="program-card group rounded-2xl bg-brand-card border border-brand-border overflow-hidden flex flex-col transition-all duration-300 hover:-translate-y-2 hover:border-brand-red/50 hover:shadow-xl hover:shadow-brand-red/10" data-category="hiit">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=600&auto=format&fit=crop" 
+                             alt="HIIT Cardio" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                             onerror="this.src='https://placehold.co/600x400/151C28/FF2A3B?text=HIIT'" />
+                        <span class="absolute top-3 left-3 bg-brand-orange text-white text-xs font-bold px-3 py-1 rounded-md uppercase">HIIT</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-white group-hover:text-brand-red transition-colors">Metabolic Shred</h3>
+                            <p class="text-xs text-slate-400 mt-2 leading-relaxed">Fast-paced interval workouts combining kettlebells, plyometrics, and rowers for max calorie burn.</p>
+                        </div>
+                        <div class="pt-4 border-t border-brand-border/60 flex items-center justify-between text-xs text-slate-400 font-semibold">
+                            <span><i class="fa-solid fa-clock text-brand-red mr-1"></i> 45 Mins</span>
+                            <span><i class="fa-solid fa-fire text-brand-orange mr-1"></i> Max Calorie Burn</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Program Card 3 -->
+                <div class="program-card group rounded-2xl bg-brand-card border border-brand-border overflow-hidden flex flex-col transition-all duration-300 hover:-translate-y-2 hover:border-brand-red/50 hover:shadow-xl hover:shadow-brand-red/10" data-category="mindbody">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?q=80&w=600&auto=format&fit=crop" 
+                             alt="Yoga Flow" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                             onerror="this.src='https://placehold.co/600x400/151C28/FF2A3B?text=Yoga'" />
+                        <span class="absolute top-3 left-3 bg-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-md uppercase">Flexibility</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-white group-hover:text-brand-red transition-colors">Vinyasa Core & Mobility</h3>
+                            <p class="text-xs text-slate-400 mt-2 leading-relaxed">Dynamic movement flow designed to improve flexibility, posture, core stability, and mental clarity.</p>
+                        </div>
+                        <div class="pt-4 border-t border-brand-border/60 flex items-center justify-between text-xs text-slate-400 font-semibold">
+                            <span><i class="fa-solid fa-clock text-brand-red mr-1"></i> 60 Mins</span>
+                            <span><i class="fa-solid fa-spa text-emerald-400 mr-1"></i> Low Impact</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Program Card 4 -->
+                <div class="program-card group rounded-2xl bg-brand-card border border-brand-border overflow-hidden flex flex-col transition-all duration-300 hover:-translate-y-2 hover:border-brand-red/50 hover:shadow-xl hover:shadow-brand-red/10" data-category="strength">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1549060279-7e168fcee0c2?q=80&w=600&auto=format&fit=crop" 
+                             alt="Boxing and Combat Fitness" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                             onerror="this.src='https://placehold.co/600x400/151C28/FF2A3B?text=Combat'" />
+                        <span class="absolute top-3 left-3 bg-brand-red text-white text-xs font-bold px-3 py-1 rounded-md uppercase">Combat</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-white group-hover:text-brand-red transition-colors">Apex Boxing Conditioning</h3>
+                            <p class="text-xs text-slate-400 mt-2 leading-relaxed">Heavy bag strikes, footwork drills, and conditioning circuits to build speed, power, and stamina.</p>
+                        </div>
+                        <div class="pt-4 border-t border-brand-border/60 flex items-center justify-between text-xs text-slate-400 font-semibold">
+                            <span><i class="fa-solid fa-clock text-brand-red mr-1"></i> 50 Mins</span>
+                            <span><i class="fa-solid fa-fire text-brand-orange mr-1"></i> High Energy</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive BMI Calculator Section -->
+    <section id="calculator" class="py-20 bg-brand-dark">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-brand-card rounded-3xl border border-brand-border p-8 sm:p-12 shadow-2xl relative overflow-hidden">
+                <!-- Background ambient accent -->
+                <div class="absolute top-0 right-0 w-64 h-64 bg-brand-red/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                    <div class="space-y-4">
+                        <span class="text-brand-red text-sm font-bold uppercase tracking-widest">Free Tool</span>
+                        <h2 class="text-3xl font-black text-white uppercase">Calculate Your <span class="text-brand-red">BMI</span></h2>
+                        <p class="text-sm text-slate-400 leading-relaxed">
+                            Body Mass Index (BMI) gives an estimated measure of health based on height and weight. Use our simple widget to assess your baseline fitness metric.
+                        </p>
+                        <div class="p-4 rounded-xl bg-brand-dark/60 border border-brand-border text-xs text-slate-400 space-y-1">
+                            <p><strong class="text-slate-200">Underweight:</strong> &lt; 18.5</p>
+                            <p><strong class="text-slate-200">Normal weight:</strong> 18.5 – 24.9</p>
+                            <p><strong class="text-slate-200">Overweight:</strong> 25 – 29.9</p>
+                        </div>
+                    </div>
+
+                    <!-- Calculator Form -->
+                    <div class="space-y-4 bg-brand-dark p-6 sm:p-8 rounded-2xl border border-brand-border">
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Weight (kg)</label>
+                            <input type="number" id="bmi-weight" placeholder="e.g. 75" class="w-full px-4 py-3 rounded-xl bg-brand-card border border-brand-border text-white placeholder-slate-500 focus:outline-none focus:border-brand-red transition-colors text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Height (cm)</label>
+                            <input type="number" id="bmi-height" placeholder="e.g. 175" class="w-full px-4 py-3 rounded-xl bg-brand-card border border-brand-border text-white placeholder-slate-500 focus:outline-none focus:border-brand-red transition-colors text-sm">
+                        </div>
+                        <button id="calc-bmi-btn" class="w-full py-3.5 rounded-xl font-bold uppercase text-xs tracking-wider text-white bg-gradient-to-r from-brand-red to-brand-orange hover:opacity-90 transition-all shadow-md">
+                            Calculate BMI
+                        </button>
+
+                        <!-- Result Display -->
+                        <div id="bmi-result-box" class="hidden mt-4 p-4 rounded-xl bg-brand-card border border-brand-border text-center animate-fade-in">
+                            <p class="text-xs text-slate-400 uppercase font-semibold">Your BMI Score</p>
+                            <p id="bmi-value" class="text-3xl font-black text-brand-red my-1">--</p>
+                            <p id="bmi-status" class="text-xs font-bold uppercase text-slate-200">--</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Membership Plans Section -->
+    <section id="membership" class="py-20 lg:py-28 bg-brand-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-4">
+                <span class="text-brand-red text-sm font-bold uppercase tracking-widest">Membership Plans</span>
+                <h2 class="text-3xl sm:text-5xl font-black text-white uppercase tracking-tight">Invest In Yourself</h2>
+                <p class="text-slate-400 text-base">Flexible membership tiers with zero locked contracts. Upgrade or cancel anytime.</p>
+                
+                <!-- Billing Toggle -->
+                <div class="inline-flex items-center gap-3 bg-brand-card p-1.5 rounded-full border border-brand-border mt-4">
+                    <button id="billing-monthly" class="px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider text-white bg-brand-red transition-all">Monthly</button>
+                    <button id="billing-yearly" class="px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider text-slate-400 hover:text-white transition-all">Yearly (Save 20%)</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+                
+                <!-- Basic Tier -->
+                <div class="rounded-3xl bg-brand-card border border-brand-border p-8 flex flex-col justify-between space-y-6 hover:border-slate-600 transition-all">
+                    <div class="space-y-4">
+                        <span class="text-slate-400 text-xs font-bold uppercase tracking-wider">Basic Tier</span>
+                        <h3 class="text-2xl font-bold text-white">Day Pass / Casual</h3>
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-4xl font-black text-white price-value" data-monthly="$29" data-yearly="$24">$29</span>
+                            <span class="text-slate-400 text-xs font-medium">/ month</span>
+                        </div>
+                        <p class="text-xs text-slate-400 border-b border-brand-border pb-6">Great for casual gym-goers looking for essential access.</p>
+                        
+                        <ul class="space-y-3 text-xs text-slate-300 font-medium">
+                            <li class="flex items-center gap-3">
+                                <i class="fa-solid fa-check text-brand-red"></i> Gym floor access (8am - 8pm)
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fa-solid fa-check text-brand-red"></i> Standard locker room access
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fa-solid fa-check text-brand-red"></i> Free WiFi
+                            </li>
+                            <li class="flex items-center gap-3 text-slate-600 line-through">
+                                <i class="fa-solid fa-xmark text-slate-600"></i> Group Fitness Classes
+                            </li>
+                            <li class="flex items-center gap-3 text-slate-600 line-through">
+                                <i class="fa-solid fa-xmark text-slate-600"></i> Sauna & Recovery Spa
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a href="#contact" class="w-full py-3.5 rounded-xl border border-brand-border text-center font-bold text-xs uppercase tracking-wider text-white hover:border-brand-red hover:bg-brand-red transition-all">
+                        Select Basic
+                    </a>
+                </div>
+
+                <!-- Pro Tier (Featured) -->
+                <div class="rounded-3xl bg-gradient-to-b from-brand-card to-brand-dark border-2 border-brand-red p-8 flex flex-col justify-between space-y-6 relative shadow-2xl shadow-brand-red/10 transform md:-translate-y-4">
+                    <span class="absolute -top-3.5 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-brand-red to-brand-orange text-white text-[10px] font-black uppercase tracking-widest px-4 py-1 rounded-full shadow-md">
+                        Most Popular
+                    </span>
+
+                    <div class="space-y-4">
+                        <span class="text-brand-red text-xs font-bold uppercase tracking-wider">Pro Tier</span>
+                        <h3 class="text-2xl font-bold text-white">Apex Athlete</h3>
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-5xl font-black text-white price-value" data-monthly="$59" data-yearly="$49">$59</span>
+                            <span class="text-slate-400 text-xs font-medium">/ month</span>
+                        </div>
+                        <p class="text-xs text-slate-400 border-b border-brand-border pb-6">Ideal for dedicated individuals seeking full access and classes.</p>
+                        
+                        <ul class="space-y-3 text-xs text-slate-200 font-medium">
+                            <li class="flex items-center gap-3">
+                                <i class="fa-solid fa-check text-brand-red"></i> 24/7 Unlimited Gym Access
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fa-solid fa-check text-brand-red"></i> All Group Classes Included
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fa-solid fa-check text-brand-red"></i> Sauna & Recovery Lounge
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fa-solid fa-check text-brand-red"></i> 1 Free Monthly Fitness Assessment
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fa-solid fa-check text-brand-red"></i> Guest Pass (1/month)
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a href="#contact" class="w-full py-4 rounded-xl bg-gradient-to-r from-brand-red to-brand-orange text-center font-bold text-xs uppercase tracking-wider text-white shadow-lg hover:opacity-90 transition-all neon-glow">
+                        Get Started Now
+                    </a>
+                </div>
+
+                <!-- Elite Tier -->
+                <div class="rounded-3xl bg-brand-card border border-brand-border p-8 flex flex-col justify-between space-y-6 hover:border-slate-600 transition-all">
+                    <div class="space-y-4">
+                        <span class="text-slate-400 text-xs font-bold uppercase tracking-wider">Elite Tier</span>
+                        <h3 class="text-2xl font-bold text-white">VIP Performance</h3>
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-4xl font-black text-white price-value" data-monthly="$99" data-yearly="$79">$99</span>
+                            <span class="text-slate-400 text-xs font-medium">/ month</span>
+                        </div>
+                        <p class="text-xs text-slate-400 border-b border-brand-border pb-6">Designed for serious transformation with 1-on-1 coaching.</p>
+                        
+                        <ul class="space-y-3 text-xs text-slate-300 font-medium">
+                            <li class="flex items-center gap-3">
+                                <i class="fa-solid fa-check text-brand-red"></i> Everything in Pro Plan
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fa-solid fa-check text-brand-red"></i> 2 x Monthly Personal Training Sessions
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fa-solid fa-check text-brand-red"></i> Personalized Nutrition Blueprint
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fa-solid fa-check text-brand-red"></i> Cryotherapy Session Access
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fa-solid fa-check text-brand-red"></i> Unlimited Guest Passes
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a href="#contact" class="w-full py-3.5 rounded-xl border border-brand-border text-center font-bold text-xs uppercase tracking-wider text-white hover:border-brand-red hover:bg-brand-red transition-all">
+                        Select VIP
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 lg:py-28 bg-gradient-to-b from-brand-dark to-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+                
+                <!-- Contact Information -->
+                <div class="space-y-8">
+                    <div>
+                        <span class="text-brand-red text-sm font-bold uppercase tracking-widest">Get In Touch</span>
+                        <h2 class="text-3xl sm:text-5xl font-black text-white uppercase tracking-tight mt-2">Visit Our Gym</h2>
+                        <p class="text-slate-400 text-base mt-4">Have questions or ready to begin your journey? Drop by, give us a call, or send us a message below.</p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4 p-4 rounded-2xl bg-brand-card/60 border border-brand-border">
+                            <div class="w-12 h-12 rounded-xl bg-brand-red/10 text-brand-red flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-bold text-white uppercase tracking-wider">Location Address</h3>
+                                <p class="text-sm text-slate-300 mt-1">100 Iron Works Boulevard, Fitness District, NY 10001</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4 p-4 rounded-2xl bg-brand-card/60 border border-brand-border">
+                            <div class="w-12 h-12 rounded-xl bg-brand-orange/10 text-brand-orange flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-bold text-white uppercase tracking-wider">Phone & Email</h3>
+                                <p class="text-sm text-slate-300 mt-1">+1 (555) 019-2834</p>
+                                <p class="text-sm text-slate-400">info@apexfitgym.com</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4 p-4 rounded-2xl bg-brand-card/60 border border-brand-border">
+                            <div class="w-12 h-12 rounded-xl bg-brand-red/10 text-brand-red flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-clock"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-bold text-white uppercase tracking-wider">Facility Hours</h3>
+                                <p class="text-sm text-slate-300 mt-1">Monday – Friday: 24 Hours open</p>
+                                <p class="text-sm text-slate-300">Saturday – Sunday: 6:00 AM – 10:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="bg-brand-card rounded-3xl border border-brand-border p-8 sm:p-10 shadow-2xl relative">
+                    <h3 class="text-2xl font-bold text-white uppercase mb-6">Send Us A Message</h3>
+                    
+                    <form id="contact-form" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Full Name *</label>
+                            <input type="text" required placeholder="John Doe" class="w-full px-4 py-3 rounded-xl bg-brand-dark border border-brand-border text-white placeholder-slate-500 focus:outline-none focus:border-brand-red transition-colors text-sm">
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Email Address *</label>
+                                <input type="email" required placeholder="john@example.com" class="w-full px-4 py-3 rounded-xl bg-brand-dark border border-brand-border text-white placeholder-slate-500 focus:outline-none focus:border-brand-red transition-colors text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Phone Number</label>
+                                <input type="tel" placeholder="(555) 000-0000" class="w-full px-4 py-3 rounded-xl bg-brand-dark border border-brand-border text-white placeholder-slate-500 focus:outline-none focus:border-brand-red transition-colors text-sm">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Interested Plan</label>
+                            <select class="w-full px-4 py-3 rounded-xl bg-brand-dark border border-brand-border text-white focus:outline-none focus:border-brand-red transition-colors text-sm">
+                                <option value="general">General Inquiry</option>
+                                <option value="basic">Basic Membership (k29/mo)</option>
+                                <option value="pro">Pro Membership (k59/mo)</option>
+                                <option value="elite">VIP Performance (k99/mo)</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Message *</label>
+                            <textarea required rows="4" placeholder="Tell us about your fitness goals..." class="w-full px-4 py-3 rounded-xl bg-brand-dark border border-brand-border text-white placeholder-slate-500 focus:outline-none focus:border-brand-red transition-colors text-sm"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-4 rounded-xl font-extrabold uppercase text-xs tracking-wider text-white bg-gradient-to-r from-brand-red to-brand-orange hover:opacity-90 transition-all shadow-lg neon-glow">
+                            Submit Message
+                        </button>
+
+                        <!-- Form Feedback Toast Message -->
+                        <div id="form-status" class="hidden p-4 rounded-xl bg-emerald-500/20 border border-emerald-500 text-emerald-300 text-xs text-center font-semibold">
+                            <i class="fa-solid fa-circle-check mr-2"></i> Thank you! Your message has been sent successfully.
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-black border-t border-brand-border/40 text-slate-400 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <!-- Footer Brand -->
+                <a href="#home" class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-brand-red to-brand-orange flex items-center justify-center text-white text-base font-black">
+                        <i class="fa-solid fa-dumbbell"></i>
+                    </div>
+                    <span class="text-xl font-black tracking-wider uppercase text-white">APEX<span class="text-brand-red">FIT</span></span>
+                </a>
+
+                <!-- Social Links -->
+                <div class="flex space-x-6 text-lg">
+                    <a href="#" class="hover:text-brand-red transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="hover:text-brand-red transition-colors"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" class="hover:text-brand-red transition-colors"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" class="hover:text-brand-red transition-colors"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
+
+                <!-- Copyright -->
+                <p class="text-xs text-slate-500">
+                    &copy; 2026 APEX FIT Gym. All Rights Reserved. Designed for maximum performance.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Client-side Logic Script -->
+    <script>
+        // DOMContentLoaded Handler
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // 1. Mobile Menu Toggle
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+
+            mobileBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+            // 2. Program Filtering Functionality
+            const filterButtons = document.querySelectorAll('.program-filter');
+            const programCards = document.querySelectorAll('.program-card');
+
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active styles from all
+                    filterButtons.forEach(b => {
+                        b.classList.remove('bg-brand-red', 'text-white', 'border-brand-red');
+                        b.classList.add('bg-brand-card', 'text-slate-300', 'border-brand-border');
+                    });
+
+                    // Add active style to selected
+                    btn.classList.add('bg-brand-red', 'text-white', 'border-brand-red');
+                    btn.classList.remove('bg-brand-card', 'text-slate-300', 'border-brand-border');
+
+                    const filterValue = btn.getAttribute('data-filter');
+
+                    programCards.forEach(card => {
+                        if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                            card.style.display = 'flex';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // 3. BMI Calculator Logic
+            const weightInput = document.getElementById('bmi-weight');
+            const heightInput = document.getElementById('bmi-height');
+            const calcBtn = document.getElementById('calc-bmi-btn');
+            const resultBox = document.getElementById('bmi-result-box');
+            const bmiValueDisplay = document.getElementById('bmi-value');
+            const bmiStatusDisplay = document.getElementById('bmi-status');
+
+            calcBtn.addEventListener('click', () => {
+                const weight = parseFloat(weightInput.value);
+                const heightCm = parseFloat(heightInput.value);
+
+                if (!weight || !heightCm || weight <= 0 || heightCm <= 0) {
+                    alert('Please enter valid positive values for weight and height.');
+                    return;
+                }
+
+                const heightM = heightCm / 100;
+                const bmi = (weight / (heightM * heightM)).toFixed(1);
+
+                bmiValueDisplay.textContent = bmi;
+
+                let category = '';
+                let colorClass = 'text-brand-red';
+
+                if (bmi < 18.5) {
+                    category = 'Underweight';
+                    colorClass = 'text-yellow-400';
+                } else if (bmi >= 18.5 && bmi < 24.9) {
+                    category = 'Normal / Healthy Weight';
+                    colorClass = 'text-emerald-400';
+                } else if (bmi >= 25 && bmi < 29.9) {
+                    category = 'Overweight';
+                    colorClass = 'text-orange-400';
+                } else {
+                    category = 'Obese Target Range';
+                    colorClass = 'text-brand-red';
+                }
+
+                bmiStatusDisplay.textContent = category;
+                bmiValueDisplay.className = `text-3xl font-black ${colorClass} my-1`;
+                resultBox.classList.remove('hidden');
+            });
+
+            // 4. Membership Billing Toggle (Monthly / Yearly)
+            const monthlyBtn = document.getElementById('billing-monthly');
+            const yearlyBtn = document.getElementById('billing-yearly');
+            const priceValues = document.querySelectorAll('.price-value');
+
+            monthlyBtn.addEventListener('click', () => {
+                monthlyBtn.classList.add('bg-brand-red', 'text-white');
+                monthlyBtn.classList.remove('text-slate-400');
+                yearlyBtn.classList.remove('bg-brand-red', 'text-white');
+                yearlyBtn.classList.add('text-slate-400');
+
+                priceValues.forEach(price => {
+                    price.textContent = price.getAttribute('data-monthly');
+                });
+            });
+
+            yearlyBtn.addEventListener('click', () => {
+                yearlyBtn.classList.add('bg-brand-red', 'text-white');
+                yearlyBtn.classList.remove('text-slate-400');
+                monthlyBtn.classList.remove('bg-brand-red', 'text-white');
+                monthlyBtn.classList.add('text-slate-400');
+
+                priceValues.forEach(price => {
+                    price.textContent = price.getAttribute('data-yearly');
+                });
+            });
+
+            // 5. Contact Form Interactive Handler
+            const contactForm = document.getElementById('contact-form');
+            const formStatus = document.getElementById('form-status');
+
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // Show feedback message
+                formStatus.classList.remove('hidden');
+                contactForm.reset();
+
+                // Auto hide status message after 5 seconds
+                setTimeout(() => {
+                    formStatus.classList.add('hidden');
+                }, 5000);
+            });
+        });
+    </script>
+</body>
+</html>
